@@ -1,0 +1,489 @@
+﻿@using System.Web.Optimization
+@using doan.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>GEARVN</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="~/Storage/Image/favicon.png">
+    @Styles.Render("~/bundle/css1")
+    <!-- Modernizr js -->
+    @Scripts.Render("~/bundleS/moder")
+</head>
+<body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Begin Body Wrapper -->
+    <div class="body-wrapper">
+        <!-- Begin Header Area -->
+        <header>
+            <!-- Begin Header Top Area -->
+            <div class="header-top">
+                <div class="container">
+                    <div class="row">
+                        <!-- Begin Header Top Left Area -->
+                        <div class="col-lg-3 col-md-4">
+                            <div class="header-top-left">
+                                <ul class="phone-wrap">
+                                    <li><span>Điện thoại liên hệ:</span><a href="#">(+84) 986 999 999</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Header Top Left Area End Here -->
+                        <!-- Begin Header Top Right Area -->
+                        <div class="col-lg-9 col-md-8">
+                            <div class="header-top-right">
+                                <ul class="ht-menu">
+                                    <!-- Begin Setting Area -->
+                                    <li>
+                                        <div class="ht-setting-trigger"><span>Cài đặt</span></div>
+                                        <div class="setting ht-setting">
+                                            <ul class="ht-setting-list">
+                                                @{ var session = (TaiKhoan)Session["TTdangnhap"]; }
+                                                @if (session == null)
+                                                {
+                                                    <li style="text-align:center"><a href='@Url.Action("Register", "User")'>Đăng ký</a></li>
+                                                    <li style="text-align:center"><a href='@Url.Action("Login", "User")'>Đăng nhập</a></li>
+                                                    <li style="text-align:center"><a href='@Url.Action("Index", "LoginAD")'>Admin</a></li>
+                                                }
+                                                else
+                                                {
+                                                    <li style="text-align:center">Xin chào : @session.taiKhoan1</li>
+                                                    <li style="text-align:right"><a href='@Url.Action("LogOut", "User")'>Thoát</a></li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <!-- Setting Area End Here -->
+                                    <!-- Begin Currency Area -->
+                                    <li>
+                                        <span class="currency-selector-wrapper">Loại tiền :</span>
+                                        <div class="ht-currency-trigger"><span>VND đ</span></div>
+                                        <div class="currency ht-currency">
+                                            <ul class="ht-setting-list">
+                                                <li><a href="#">USD $</a></li>
+                                                <li class="active"><a href="#">VND đ</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <!-- Currency Area End Here -->
+                                    <!-- Begin Language Area -->
+                                    <li>
+                                        <span class="language-selector-wrapper">Ngôn ngữ :</span>
+                                        <div class="ht-language-trigger"><span>Vietnamese</span></div>
+                                        <div class="language ht-language">
+                                            <ul class="ht-setting-list">
+                                                <li><a><img src="~/Storage/Image/menu/flag-icon/1.jpg" alt="">English</a></li>
+                                                <li class="active"><a><img src="~/Storage/Image/menu/flag-icon/hinh co viet nam.png" alt="">Vietnamese</a></li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <!-- Language Area End Here -->
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Header Top Right Area End Here -->
+                    </div>
+                </div>
+            </div>
+            <!-- Header Top Area End Here -->
+            <!-- Begin Header Middle Area -->
+            <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
+                <div class="container">
+                    <div class="row">
+                        <!-- Begin Header Logo Area -->
+                        <div class="col-lg-3">
+                            <div class="logo pb-sm-30 pb-xs-30">
+                                <a href='@Url.Action("Index", "Home")'>
+                                    <img src="~/Storage/Image/menu/logo/1.jpg" alt="">
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Header Logo Area End Here -->
+                        <!-- Begin Header Middle Right Area -->
+                        <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
+                            <!-- Begin Header Middle Searchbox Area -->
+                            <form action="#" class="hm-searchbox">
+                                <select class="nice-select select-search-category">
+                                    <option value="0">Tất cả</option>
+                                    <option value="10">Laptops</option>
+                                    <option value="17"> • Gaming</option>
+                                    <option value="20"> &emsp;Asus</option>
+                                    <option value="21"> &emsp;Acer</option>
+                                    <option value="22"> &emsp;MSI</option>
+                                    <option value="23"> &emsp;Lenovo</option>
+                                    <option value="24"> &emsp;HP</option>
+                                    <option value="25"> &emsp;Gigabyte</option>
+                                    <option value="26"> &emsp;Dell</option>
+                                    <option value="27"> • Học tập & Làm việc</option>
+                                    <option value="28"> &emsp;Asus</option>
+                                    <option value="18"> &emsp;Acer</option>
+                                    <option value="29"> &emsp;MSI</option>
+                                    <option value="30"> &emsp;Lenovo</option>
+                                    <option value="31"> &emsp;Dell</option>
+                                    <option value="32"> &emsp;LG</option>
+                                    <option value="11">Chuột</option>
+                                    <option value="42"> &emsp;Asus</option>
+                                    <option value="45"> &emsp;MSI</option>
+                                    <option value="47"> &emsp;Logitech</option>
+                                    <option value="12">Microsoft & Office</option>
+                                    <option value="65"> • Microsoft</option>
+                                    <option value="66"> &emsp;Windows 10 pro</option>
+                                    <option value="67"> &emsp;Windows 10 home</option>
+                                    <option value="68"> &emsp;Windows 11 pro</option>
+                                    <option value="69"> &emsp;Windows 11 home</option>
+                                    <option value="70"> • Office</option>
+                                    <option value="71"> &emsp;Office 365</option>
+                                    <option value="72"> &emsp;Office 2021</option>
+                                </select>
+                                <input type="text" placeholder="Enter your search key ...">
+                                <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                            <!-- Header Middle Searchbox Area End Here -->
+                            <!--Begin Header Mini Cart Area-->
+                              @Html.Action("GiohangPartial","ShopingCart")
+                         </div>
+                            <!-- Header Middle Right Area End Here -->
+                        </div>
+                     </div>
+                </div>
+            <!-- Header Middle Area End Here -->
+            <!-- Begin Header Bottom Area -->
+            <div class="header-bottom header-sticky d-none d-lg-block d-xl-block">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- Begin Header Bottom Menu Area -->
+                            <div class="hb-menu">
+                                <nav>
+                                    <ul>
+                                        <li style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                                            @Html.ActionLink("Trang Chủ","Index","Home")
+                                        </li>
+                                        <li class="megamenu-holder">
+                                            <a>Danh mục sản phẩm</a>
+                                            <ul class="megamenu hb-megamenu">
+                                                <li>
+                                                    <a>Laptop gaming theo thương hiệu</a>
+                                                    <ul>
+                                                        <li><a href='@Url.Action("AsusG","Products")'>Asus</a></li>
+                                                        <li><a href='@Url.Action("AcerG","Products")'>Acer</a></li>
+                                                        <li><a href='@Url.Action("MSIG","Products")'>MSI</a></li>
+                                                        <li><a href='@Url.Action("LenovoG","Products")'>Lenovo</a></li>
+                                                        <li><a href='@Url.Action("HpG","Products")'>HP</a></li>
+                                                        <li><a href='@Url.Action("Gigabyte","Products")'>Gigabyte</a></li>
+                                                        <li><a href='@Url.Action("DellG","Products")'>Dell</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a>Laptop học tập & làm việc</a>
+                                                    <ul>
+                                                        <li><a href='@Url.Action("AsusHT","Products")'>Asus</a></li>
+                                                        <li><a href='@Url.Action("AcerHT","Products")'>Acer</a></li>
+                                                        <li><a href='@Url.Action("MSIHT","Products")'>MSI</a></li>
+                                                        <li><a href='@Url.Action("LenovoHT","Products")'>Lenovo</a></li>
+                                                        <li><a href='@Url.Action("DellHT","Products")'>Dell</a></li>
+                                                        <li><a href='@Url.Action("LgHT","Products")'>LG</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a>Chuột - Office - Windows</a>
+                                                    <ul>
+                                                        <li>@Html.ActionLink("Chuột Asus", "cAsus", "Products")</li>
+                                                        <li>@Html.ActionLink("Chuột MSI", "cMSi", "Products")</li>
+                                                        <li>@Html.ActionLink("Chuột Logitech", "cLogi", "Products")</li>
+                                                        <li>@Html.ActionLink("Office 365", "Office365", "Products")</li>
+                                                        <li>@Html.ActionLink("Office 2021", "Office2021", "Products")</li>
+                                                        <li>@Html.ActionLink("Windows 10 Home", "W10H", "Products")</li>
+                                                        <li>@Html.ActionLink("Windows 10 Pro", "W10P", "Products")</li>
+                                                        <li>@Html.ActionLink("Windows 11 Home", "W11H", "Products")</li>
+                                                        <li>@Html.ActionLink("Windows 11 Pro", "W11P", "Products")</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="dropdown-holder">
+                                            <a>Hỗ Trợ</a>
+                                            <ul class="hb-dropdown">
+                                                <li class="sub-dropdown-holder">
+                                                    <a href="https://gearvn.com/pages/chinh-sach-giao-hang" target="_blank">Chính sách vận chuyển </a>
+                                                </li>
+                                                <li class="sub-dropdown-holder">
+                                                    <a href="https://gearvn.com/pages/huong-dan-tra-gop" target="_blank">Hướng dẫn trả góp</a>
+                                                </li>
+                                                <li class="sub-dropdown-holder">
+                                                    <a href="https://gearvn.com/pages/chinh-sach-bao-hanh" target="_blank">Chính sách bảo hành</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="megamenu-static-holder">
+                                            <a>Tin Tức</a>
+                                            <ul class="megamenu hb-megamenu">
+                                                <li>
+                                                    <a href="https://gvn360.com/" target="_blank">TIN CÔNG NGHỆ</a>
+                                                    <ul>
+                                                        <li><a href="https://gvn360.com/cong-nghe/elon-musk-la-nhan-vat-cua-nam-2021-do-tap-chi-time-binh-chon/" target="_blank">Elon Musk là nhân vật của năm 2021 do tạp chí...</a></li>
+                                                        <li><a href="https://gvn360.com/cong-nghe/45-trieu-do-tien-dien-tu-boc-hoi-khoi-thi-truong-nft/" target="_blank">4,5 triệu đô tiền điện tử “bốc hơi” khỏi thị trường...</a></li>
+                                                        <li><a href="https://gvn360.com/cong-nghe/google-play-chuan-bi-len-windows-choi-game-mobile-sap-khong-can-dien-thoai/" target="_blank">Google Play chuẩn bị lên Windows, chơi game mobile sắp không...</a></li>
+                                                        <li><a href="https://gvn360.com/cong-nghe/mainboard-msi-meg-z690-godlike-so-huu-man-hinh-cam-ung-bu-nhu-iphone/" target="_blank">Mainboard MSI MEG Z690 GODLIKE sở hữu màn hình cảm ứng...</a></li>
+                                                        <li><a href="https://gvn360.com/cong-nghe/lo-tin-sony-se-dua-game-ps4-ps5-len-smartphone/" target="_blank">Lộ tin Sony sẽ đưa game PS4/PS5 lên smartphone</a></li>
+                                                        <li><a href="https://gvn360.com/cong-nghe/tro-chuot-chan-man-hinh-khi-go-van-ban-gay-kho-chiu-day-la-cach-ban-an-no-di/" target="_blank">Trỏ chuột chắn màn hình khi gõ văn bản gây khó...</a></li>
+                                                        <li><a href="https://gvn360.com/cong-nghe/card-dao-coin-dung-gpu-macbook-pro-2019-co-gia-2000-do-tai-trung-quoc/" target="_blank">Card đào coin dùng GPU MacBook Pro 2019 có giá 2000...</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="https://gvn360.com/category/tin-game/" target="_blank">TIN GAME</a>
+                                                    <ul>
+                                                        <li><a href="https://gvn360.com/category/tin-game/" target="_blank">Tất cả</a></li>
+                                                        <li><a href="https://gvn360.com/category/tin-game/top-game/" target="_blank">TOP game</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="https://gearvn.com/pages/khuyenmaigaminggear">Khuyến Mãi Tổng Hợp</a>
+                                                    <ul>
+                                                        <li><a href="https://gearvn.com/pages/uu-dai-gear">GEAR GIÁ SỐC - GIAO SIÊU TỐC - ƯU ĐÃI ĐẾN 51% - FREESHIP TOÀN QUỐC</a></li>
+                                                        <li><a href="https://gearvn.com/pages/chuot-may-tinh">TỔNG HỢP KHUYẾN MÃI CHUỘT GAMING</a></li>
+                                                        <li><a href="https://gearvn.com/products/balo-laptop-asus-ranger-bp1502-15-6-inch-den">BALO ASUS ROG RANGER BP1502 GIẢM NGAY 50%</a></li>
+                                                    </ul>
+
+                                                </li>
+                                                <li>
+                                                    @Html.ActionLink("Blogs","Blogs","Blog")
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>@Html.ActionLink("Về Chúng Tôi", "Index", "About")</li>
+                                        <li>@Html.ActionLink("Liên Hệ", "Index", "Contact")</li>
+                                        <li>@Html.ActionLink("FAQ", "Index", "FAQ")</li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <!-- Header Bottom Menu Area End Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header Bottom Area End Here -->
+            <!-- Begin Mobile Menu Area -->
+            <div class="mobile-menu-area d-lg-none d-xl-none col-12">
+                <div class="container">
+                    <div class="row">
+                        <div class="mobile-menu">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu Area End Here -->
+        </header>
+        <!-- Header Area End Here -->
+
+        @RenderSection("QuangCao", required: false)
+
+        @RenderBody()
+
+        <!-- Begin Footer Area -->
+        <div class="footer">
+            <!-- Begin Footer Static Top Area -->
+            <div class="footer-static-top">
+                <div class="container">
+                    <!-- Begin Footer Shipping Area -->
+                    <div class="footer-shipping pt-60 pb-55 pb-xs-25">
+                        <div class="row">
+                            <!-- Begin Li's Shipping Inner Box Area -->
+                            <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                                <div class="li-shipping-inner-box">
+                                    <div class="shipping-icon">
+                                        <img src="~/Storage/Image/shipping-icon/1.png" alt="Shipping Icon">
+                                    </div>
+                                    <div class="shipping-text">
+                                        <h2>Miễn Phí Giao Hàng</h2>
+                                        <p>Và trả hàng. Xem và thanh toán để biết ngày giao hàng.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Li's Shipping Inner Box Area End Here -->
+                            <!-- Begin Li's Shipping Inner Box Area -->
+                            <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
+                                <div class="li-shipping-inner-box">
+                                    <div class="shipping-icon">
+                                        <img src="~/Storage/Image/shipping-icon/2.png" alt="Shipping Icon">
+                                    </div>
+                                    <div class="shipping-text">
+                                        <h2>Thanh Toán An Toàn</h2>
+                                        <p>Thanh toán bằng các phương thức an toàn và phổ biến nhất thế giới.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Li's Shipping Inner Box Area End Here -->
+                            <!-- Begin Li's Shipping Inner Box Area -->
+                            <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                                <div class="li-shipping-inner-box">
+                                    <div class="shipping-icon">
+                                        <img src="~/Storage/Image/shipping-icon/3.png" alt="Shipping Icon">
+                                    </div>
+                                    <div class="shipping-text">
+                                        <h2>Mua Sắm Tự Tin</h2>
+                                        <p>Với sự bảo vệ của chúng tôi từ khi nhấp chuột mua hàng đến khi giao hàng.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Li's Shipping Inner Box Area End Here -->
+                            <!-- Begin Li's Shipping Inner Box Area -->
+                            <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
+                                <div class="li-shipping-inner-box">
+                                    <div class="shipping-icon">
+                                        <img src="~/Storage/Image/shipping-icon/4.png" alt="Shipping Icon">
+                                    </div>
+                                    <div class="shipping-text">
+                                        <h2>24/7 Trung Tâm Trợ Giúp</h2>
+                                        <p>Bạn có câu hỏi. Hãy gọi cho chuyên gia hoặc chat online.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Li's Shipping Inner Box Area End Here -->
+                        </div>
+                    </div>
+                    <!-- Footer Shipping Area End Here -->
+                </div>
+            </div>
+            <!-- Footer Static Top Area End Here -->
+            <!-- Begin Footer Static Middle Area -->
+            <div class="footer-static-middle">
+                <div class="container">
+                    <div class="footer-logo-wrap pt-50 pb-35">
+                        <div class="row">
+                            <!-- Begin Footer Logo Area -->
+                            <div class="col-lg-4 col-md-6">
+                                <div class="footer-logo">
+                                    <img src="~/Storage/Image/menu/logo/1.jpg" alt="Footer Logo">
+                                    <p class="info">
+                                        GearVN là doanh nghiệp chuyên cung cấp thiết bị, giải pháp về laptop, thiết bị chơi game, thiết bị công nghệ cao cấp hàng đầu Việt Nam.
+                                    </p>
+                                </div>
+                                <ul class="des">
+                                    <li>
+                                        <span>HỆ THỐNG SHOWROOM </span><br />
+                                        <span>SHOWROOM HCM (Làm việc từ 8:00 - 20:00) </span><br />
+                                        • Địa chỉ: 78-80-82 Hoàng Hoa Thám, Phường 12, Quận Tân Bình.<br />
+                                        <span>SHOWROOM HN (Làm việc từ 9:00 - 19:00) </span>
+                                        • Địa chỉ: 32 Ngõ 121 Thái Hà, Phường Trung Liệt, Quận Đống Đa.
+                                    </li>
+                                    <li>
+                                        <span>HỆ THỐNG TỔNG ĐÀI MIỄN PHÍ </span> <br />
+                                        <span>(Làm việc từ 9:00 - 19:00)</span> <br />
+                                        <a href="#">Tổng đài mua hàng: <b>1800 6975</b></a> <br />
+                                        <a href="#">Tổng đài hỗ trợ khách hàng: <b>1800 6173</b></a>
+                                    </li>
+                                    <li>
+                                        <span>Email: </span>
+                                        <a href="mailto://2011549769@nttu.edu.vn">2011549769@nttu.edu.vn</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Footer Logo Area End Here -->
+                            <!-- Begin Footer Block Area -->
+                            <div class="col-lg-2 col-md-3 col-sm-6">
+                                <div class="footer-block">
+                                    <h3 class="footer-block-title">VỀ GEARVN</h3>
+                                    <ul>
+                                        <li><a href="https://beta.gearvn.com/gioi-thieu-ve-gearvn.html" target="_blank">Giới thiệu về GEARVN</a></li>
+                                        <li><a href="https://tuyendung.gearvn.com/#alljobs" target="_blank">Tuyển dụng khối Văn phòng</a></li>
+                                        <li><a href="https://tuyendung.gearvn.com/jobs?dept=639&return=1" target="_blank">Tuyển dụng khối Showroom</a></li>
+                                        <li><a href="https://beta.gearvn.com/chinh-sach-bao-mat.html" target="_blank">Chính sách bảo mật</a></li>
+                                        <li><a href="https://beta.gearvn.com/dieu-khoan-su-dung.html" target="_blank">Điều khoản sử dụng</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!-- Footer Block Area End Here -->
+                            <!-- Begin Footer Block Area -->
+                            <div class="col-lg-4">
+                                <div class="footer-block">
+                                    <h3 class="footer-block-title">Theo Dõi Chúng Tôi</h3>
+                                    <ul class="social-link">
+                                        <li class="twitter">
+                                            <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
+                                                <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li class="rss">
+                                            <a href="https://rss.com/" data-toggle="tooltip" target="_blank" title="RSS">
+                                                <i class="fa fa-rss"></i>
+                                            </a>
+                                        </li>
+                                        <li class="google-plus">
+                                            <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google Plus">
+                                                <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li class="facebook">
+                                            <a href="https://www.facebook.com/gia.heo/" data-toggle="tooltip" target="_blank" title="Facebook">
+                                                <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li class="youtube">
+                                            <a href="https://www.youtube.com/channel/UCbr5BEUpjkk3cbk0PzT1cxQ" data-toggle="tooltip" target="_blank" title="Youtube">
+                                                <i class="fa fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                        <li class="instagram">
+                                            <a href="https://www.instagram.com/gia.heo" data-toggle="tooltip" target="_blank" title="Instagram">
+                                                <i class="fa fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- Begin Footer Newsletter Area -->
+                                <div class="footer-newsletter">
+                                    <h4>Đăng Ký Nhận Bản Tin</h4>
+                                    <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="footer-subscribe-form validate" target="_blank" novalidate>
+                                        <div id="mc_embed_signup_scroll">
+                                            <div id="mc-form" class="mc-form subscribe-form form-group">
+                                                <input id="mc-email" type="email" autocomplete="off" placeholder="Enter your email" />
+                                                <button class="btn" id="mc-submit">Đăng ký</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <!-- Footer Newsletter Area End Here -->
+                            </div>
+                            <!-- Footer Block Area End Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Static Middle Area End Here -->
+            <!-- Begin Footer Static Bottom Area -->
+            <div class="footer-static-bottom pt-55 pb-55">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- Begin Footer Payment Area -->
+                            <div class="copyright text-center">
+                                <a href="#">
+                                    <img src="~/Storage/Image/payment/1.png" alt="">
+                                </a>
+                            </div>
+                            <!-- Footer Payment Area End Here -->
+                            <!-- Begin Copyright Area -->
+                            <div class="copyright text-center pt-25">
+                                <span><a href="">Copyright © 2021</a></span>
+                            </div>
+                            <!-- Copyright Area End Here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Static Bottom Area End Here -->
+        </div>
+        <!-- Footer Area End Here -->
+    </div>
+    @Scripts.Render("~/bundleS/scripts1")
+</body>
+
+</html>

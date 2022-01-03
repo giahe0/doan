@@ -1,0 +1,86 @@
+﻿@model doan.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li class="active">Đăng ký</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+@using (Html.BeginForm("Register","User",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="page-section mb-60">
+        <div class="container">
+            <div class="row">
+                <div class="login-form">
+                    <div class="row">
+                            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                        <div class="col-md-6 col-12 mb-20">
+                            @Html.LabelFor(model => model.hoDem, "Họ *")
+                                @Html.TextBoxFor(model => model.hoDem, new { @class = "mb-0", @placeholder = "Họ" })
+                        </div>
+
+                        <div class="col-md-6 col-12 mb-20">
+                            @Html.LabelFor(model => model.tenTV, "Tên *")
+                                @Html.TextBoxFor(model => model.tenTV, new { @class = "mb-0", @placeholder = "Tên" })
+                        </div>
+
+                        <div class="col-md-6 col-12 mb-20">
+                            @Html.LabelFor(model => model.email, "Email *")
+                            @Html.TextBoxFor(model => model.email, new { @class = "mb-0", @placeholder = "Email" })
+                            @if (ViewBag.error != null)
+                            {
+                                <span class="alert alert-danger" role="alert" >@ViewBag.error</span>
+                            }
+                        </div>
+
+                        <div class="col-md-6 col-12 mb-20">
+                            @Html.LabelFor(model => model.taiKhoan1, "Tên đăng nhập *")
+                            @Html.TextBoxFor(model => model.taiKhoan1, new { @class = "mb-0", @placeholder = "Tên đăng nhập" })
+                            @if (ViewBag.error != null)
+                            {
+                                <span class="alert alert-danger" role="alert">@ViewBag.error</span>
+                            }
+                        </div>
+
+                        <div class="col-md-6 col-12 mb-20">
+                            @Html.LabelFor(model => model.matKhau, "Mật khẩu *")
+                                @Html.PasswordFor(model => model.matKhau, new { @class = "mb-0", @placeholder = "Mật khẩu" })
+                        </div>
+
+                        <div class="col-md-6 col-12 mb-20">
+                            @Html.LabelFor(model => model.matKhau, "Nhập lại mật khẩu *")
+                                @Html.PasswordFor(model => model.matKhau, new { @class = "mb-0", @placeholder = "Nhập lại mật khẩu" })
+                        </div>
+
+                        <div class="col-md-6 col-12 mb-20">
+                            @Html.LabelFor(model => model.ngaysinh, "Ngày sinh")
+                                <input type="date" name="NgaySinh" />
+                        </div>
+
+                        <div class="col-md-6 col-12 mb-20">
+                            @Html.LabelFor(model => model.soDT, "Số điện thoại")
+                                @Html.TextBoxFor(model => model.soDT, new { @class = "mb-0", @placeholder = "Số điện thoại" })
+                                
+                        </div>
+                        <div class="col-12">
+                                <input type="submit" value="Đăng ký" class="btn btn-default" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

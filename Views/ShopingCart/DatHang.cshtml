@@ -1,0 +1,196 @@
+﻿@using doan.Models
+@model doan.Models.KhachHang
+@{
+    ViewBag.Title = "Đơn Đặt Hàng";
+    List<Giohang> x = ViewData["DatHang"] as List<Giohang>;
+}
+<!-- Begin Li's Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li>@Html.ActionLink("Trang Chủ", "Index", "Home")</li>
+                <li class="active">Thanh toán</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+<!--Checkout Area Strat-->
+@using (Html.BeginForm("SaveToDataBase", "ShopingCart", FormMethod.Post))
+{
+    <div class="checkout-area pt-60 pb-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-12">
+                    <div class="checkbox-form">
+                        <h3>Thông tin khách hàng</h3>
+
+                        @Html.AntiForgeryToken()
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="country-select clearfix">
+                                    <label>Quốc gia <span class="required">*</span></label>
+                                    <select class="nice-select wide">
+                                        <option data-display="Bangladesh">Bangladesh</option>
+                                        <option value="uk">London</option>
+                                        <option value="rou">Romania</option>
+                                        <option value="fr">French</option>
+                                        <option value="de">Germany</option>
+                                        <option value="aus">Australia</option>
+                                        <option value="vni">Việt nam</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label for="hoTen">Họ tên khách hàng<span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.tenKH, new { @class = "checkout-form-list" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label for="ngaySinh">Ngày sinh </label>
+                                    @Html.TextBoxFor(m => m.ngaySinh, new { @type = "date", @class = "checkout-form-list" })
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="checkout-form-list">
+                                    <label for="addr">Địa chỉ giao hàng <span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.diaChi, new { @class = "checkout-form-list" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label for="soDT">Số điện thoại <span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.soDT, new { @class = "checkout-form-list" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label for="mail">Email<span class="required">*</span></label>
+                                    @Html.TextBoxFor(m => m.email, new { @class = "checkout-form-list" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label for="ngayDat">Ngày đặt</label>
+                                    @DateTime.Now.ToShortDateString()
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkout-form-list">
+                                    <label for="ngayGiao">Ngày giao dự kiến<span class="required">*</span></label>
+                                    @DateTime.Now.AddDays(5).ToShortDateString()
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="order-notes">
+                                    <div class="checkout-form-list">
+                                        <label for="ghiChu">Thông tin ghi chú</label>
+                                        @Html.TextAreaFor(Model => Model.ghiChu, new { @class = "Checkout-form-list", @placeholder = "Thông tin ghi chú cho người bán." })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-12">
+                    <div class="your-order">
+                        <h3>Thông tin sản phẩm đặt</h3>
+                        <div class="your-order-table table-responsive">
+
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="cart-product-name">Sản phẩm</th>
+                                        <th class="cart-product-total">Tổng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in x)
+                                    {
+                                        <tr class="cart_item">
+                                            <td class="cart-product-name"> @item.tensanpham<strong class="product-quantity">  x  @item.SOLUONG</strong></td>
+                                            <td class="cart-product-total"><span class="amount">@String.Format("{0:#,##0}", @item.Thanhtien)</span></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr class="cart-subtotal">
+                                        <th>Số lượng </th>
+                                        <td><span class="amount">@ViewBag.Tongsoluong</span></td>
+                                    </tr>
+                                    <tr class="order-total">
+                                        <th>Tổng </th>
+                                        <td><strong><span class="amount">@String.Format("{0:#,##0 đ}", @ViewBag.Tongtien)</span></strong></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="payment-method">
+                            <div class="payment-accordion">
+                                <div id="accordion">
+                                    <div class="card">
+                                        <div class="card-header" id="#payment-1">
+                                            <h5 class="panel-title">
+                                                <a class="" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    Cam kết bảo mật
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Thông tin cá nhân của bạn sẽ được sử dụng để xử lý đơn hàng, tăng trải nghiệm sử dụng website, và cho các mục đích cụ thể khác đã được mô tả trong chính sách riêng tư.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="#payment-2">
+                                            <h5 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                    Kiểm tra thanh toán
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Hãy kiểm tra lại một lần nữa trước khi thanh toán.Nếu bạn đã thanh toán COD chúng tôi sẽ sớm liên hệ lại cho bạn</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="#payment-3">
+                                            <h5 class="panel-title">
+                                                <a class="collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                    PayPal
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Thực hiện thanh toán của bạn trực tiếp vào tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng ID đơn đặt hàng của bạn làm tham chiếu thanh toán. Đơn đặt hàng của bạn sẽ không được giao cho đến khi tiền đã về tài khoản của chúng tôi.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="order-button-payment">
+                                    <input value="Đặt hàng" type="submit">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-method">
+                            <div class="payment-accordion">
+                                <div class="order-button-payment">
+                                    <a href="@Url.Action("Giohang", "ShopingCart")">Quay lại giỏ hàng</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+    <!--Checkout Area End-->

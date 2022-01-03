@@ -1,0 +1,59 @@
+﻿@model doan.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumb-area">
+    <div class="container">
+        <div class="breadcrumb-content">
+            <ul>
+                <li><a href="index.html">Trang Chủ</a></li>
+                <li class="active">Đăng nhập</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<h5 style="margin: 13px 325px; color: #ef0606 ">@ViewBag.Thongbao</h5>
+
+@using (Html.BeginForm("Login", "User", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()       
+    
+    <div class="page-section mb-60">
+        <div class="container">
+            <div class="row">
+                <div class="login-form">
+                    <div class="row">
+                        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger" })
+                        <div class="col-md-12 col-12 mb-20">
+                            @Html.LabelFor(model => model.taiKhoan1, "Tên đăng nhập *")
+                            @Html.TextBox("acc","", new { @class = "mb-0", @placeholder = "Tên đăng nhập" })
+                            <span style="color: #ef0606">@ViewData["loi"]</span>
+                        </div>
+
+                        <div class="col-12 mb-20">
+                            @Html.LabelFor(model => model.matKhau, "Mật khẩu đăng nhập *")
+                            @Html.Password("pass","", new { @class = "mb-0", @placeholder = "Mật khẩu" })
+                            <span style="color: #ef0606">@ViewData["loi2"]</span>
+                        </div>
+
+                        <div class="col-md-8">
+                            <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
+                                <input type="checkbox" id="remember_me">
+                                <label for="remember_me">Giữ đăng nhập</label>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mt-10 mb-20 text-left text-md-right">
+                            @Html.ActionLink("Đăng ký ?", "Register", "User")
+                        </div>
+                        <div class="col-md-6">
+                            <button class="register-button mt-0">Đăng nhập</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

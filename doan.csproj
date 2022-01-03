@@ -1,0 +1,862 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{12010384-3511-47BF-908C-16BC9115432F}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>doan</RootNamespace>
+    <AssemblyName>doan</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44341</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>packages\Microsoft.AspNet.Webpages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\animate.css" />
+    <Content Include="Content\bootstrap-datetimepicker.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\font-face.css" />
+    <Content Include="Content\fontawesome-stars.css" />
+    <Content Include="Content\helper.css" />
+    <Content Include="Content\jquery-ui.min.css" />
+    <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\material-design-iconic-font.min.css" />
+    <Content Include="Content\meanmenu.css" />
+    <Content Include="Content\nice-select.css" />
+    <Content Include="Content\owl.carousel.min.css" />
+    <Content Include="Content\owl.video.play.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\responsive.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\slick.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\theme.css" />
+    <Content Include="Content\vendor\animsition\animsition.min.css" />
+    <Content Include="Content\vendor\animsition\animsition.min.js" />
+    <Content Include="Content\vendor\bootstrap-4.1\bootstrap.min.css" />
+    <Content Include="Content\vendor\bootstrap-4.1\bootstrap.min.js" />
+    <Content Include="Content\vendor\bootstrap-4.1\popper.min.js" />
+    <Content Include="Content\vendor\bootstrap-progressbar\bootstrap-progressbar-3.3.4.min.css" />
+    <Content Include="Content\vendor\bootstrap-progressbar\bootstrap-progressbar.min.js" />
+    <Content Include="Content\vendor\chartjs\Chart.bundle.min.js" />
+    <Content Include="Content\vendor\circle-progress\circle-progress.js" />
+    <Content Include="Content\vendor\circle-progress\circle-progress.min.js" />
+    <Content Include="Content\vendor\countdown\countdowntime.js" />
+    <Content Include="Content\vendor\countdown\jquery.countdown.min.js" />
+    <Content Include="Content\vendor\countdown\moment-timezone-with-data.min.js" />
+    <Content Include="Content\vendor\countdown\moment-timezone.min.js" />
+    <Content Include="Content\vendor\countdown\moment.min.js" />
+    <Content Include="Content\vendor\counter-up\jquery.counterup.min.js" />
+    <Content Include="Content\vendor\counter-up\jquery.waypoints.min.js" />
+    <Content Include="Content\vendor\counter-up\waypoints.min.js" />
+    <Content Include="Content\vendor\css-hamburgers\hamburgers.css" />
+    <Content Include="Content\vendor\css-hamburgers\hamburgers.min.css" />
+    <Content Include="Content\vendor\font-awesome-4.7\css\font-awesome.css" />
+    <Content Include="Content\vendor\font-awesome-4.7\css\font-awesome.min.css" />
+    <Content Include="Content\vendor\font-awesome-4.7\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\vendor\font-awesome-4.7\HELP-US-OUT.txt" />
+    <Content Include="Content\vendor\font-awesome-5\css\fontawesome-all.min.css" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-brands-400.svg" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-regular-400.svg" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-solid-900.svg" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\CHANGELOG.txt" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\CONTRIBUTING.txt" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\fullcalendar.css" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\fullcalendar.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\fullcalendar.min.css" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\fullcalendar.min.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\fullcalendar.print.css" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\fullcalendar.print.min.css" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\gcal.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\gcal.min.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\lib\moment.min.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\LICENSE.txt" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale-all.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\af.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ar-dz.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ar-kw.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ar-ly.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ar-ma.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ar-sa.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ar-tn.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ar.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\be.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\bg.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\bs.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ca.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\cs.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\da.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\de-at.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\de-ch.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\de.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\el.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\en-au.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\en-ca.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\en-gb.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\en-ie.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\en-nz.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\es-do.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\es-us.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\es.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\et.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\eu.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\fa.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\fi.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\fr-ca.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\fr-ch.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\fr.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\gl.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\he.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\hi.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\hr.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\hu.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\id.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\is.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\it.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ja.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ka.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\kk.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ko.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\lb.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\lt.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\lv.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\mk.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ms-my.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ms.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\nb.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\nl-be.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\nl.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\nn.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\pl.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\pt-br.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\pt.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ro.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\ru.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\sk.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\sl.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\sq.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\sr-cyrl.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\sr.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\sv.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\th.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\tr.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\uk.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\vi.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\zh-cn.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\zh-hk.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\locale\zh-tw.js" />
+    <Content Include="Content\vendor\fullcalendar-3.10.0\README.txt" />
+    <Content Include="Content\vendor\jquery-3.2.1.min.js" />
+    <Content Include="Content\vendor\jquery-ui.min.js" />
+    <Content Include="Content\vendor\lightbox2\dist\css\lightbox.css" />
+    <Content Include="Content\vendor\lightbox2\dist\images\close.png" />
+    <Content Include="Content\vendor\lightbox2\dist\images\loading.gif" />
+    <Content Include="Content\vendor\lightbox2\dist\images\next.png" />
+    <Content Include="Content\vendor\lightbox2\dist\images\prev.png" />
+    <Content Include="Content\vendor\lightbox2\dist\js\lightbox-plus-jquery.js" />
+    <Content Include="Content\vendor\lightbox2\dist\js\lightbox-plus-jquery.min.js" />
+    <Content Include="Content\vendor\lightbox2\dist\js\lightbox.js" />
+    <Content Include="Content\vendor\lightbox2\dist\js\lightbox.min.js" />
+    <Content Include="Content\vendor\lightbox2\src\css\lightbox.css" />
+    <Content Include="Content\vendor\lightbox2\src\images\close.png" />
+    <Content Include="Content\vendor\lightbox2\src\images\loading.gif" />
+    <Content Include="Content\vendor\lightbox2\src\images\next.png" />
+    <Content Include="Content\vendor\lightbox2\src\images\prev.png" />
+    <Content Include="Content\vendor\lightbox2\src\js\lightbox.js" />
+    <Content Include="Content\vendor\mdi-font\css\material-design-iconic-font.css" />
+    <Content Include="Content\vendor\mdi-font\css\material-design-iconic-font.min.css" />
+    <Content Include="Content\vendor\mdi-font\fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="Content\vendor\perfect-scrollbar\perfect-scrollbar.css" />
+    <Content Include="Content\vendor\perfect-scrollbar\perfect-scrollbar.js" />
+    <Content Include="Content\vendor\perfect-scrollbar\perfect-scrollbar.min.js" />
+    <Content Include="Content\vendor\progressbar\progressbar.js" />
+    <Content Include="Content\vendor\progressbar\progressbar.min.js" />
+    <Content Include="Content\vendor\select2\select2.min.css" />
+    <Content Include="Content\vendor\select2\select2.min.js" />
+    <Content Include="Content\vendor\slick\ajax-loader.gif" />
+    <Content Include="Content\vendor\slick\fonts\slick.svg" />
+    <Content Include="Content\vendor\slick\slick-theme.css" />
+    <Content Include="Content\vendor\slick\slick.css" />
+    <Content Include="Content\vendor\slick\slick.js" />
+    <Content Include="Content\vendor\slick\slick.min.js" />
+    <Content Include="Content\vendor\smk-accordion\accordion.css" />
+    <Content Include="Content\vendor\smk-accordion\accordion.js" />
+    <Content Include="Content\vendor\smk-accordion\accordion.min.js" />
+    <Content Include="Content\vendor\sweetalert\sweetalert.min.js" />
+    <Content Include="Content\vendor\vector-map\jquery.vmap.brazil.js" />
+    <Content Include="Content\vendor\vector-map\jquery.vmap.europe.js" />
+    <Content Include="Content\vendor\vector-map\jquery.vmap.france.js" />
+    <Content Include="Content\vendor\vector-map\jquery.vmap.germany.js" />
+    <Content Include="Content\vendor\vector-map\jquery.vmap.js" />
+    <Content Include="Content\vendor\vector-map\jquery.vmap.min.js" />
+    <Content Include="Content\vendor\vector-map\jquery.vmap.russia.js" />
+    <Content Include="Content\vendor\vector-map\jquery.vmap.sampledata.js" />
+    <Content Include="Content\vendor\vector-map\jquery.vmap.usa.js" />
+    <Content Include="Content\vendor\vector-map\jquery.vmap.world.js" />
+    <Content Include="Content\vendor\vector-map\jqvmap.min.css" />
+    <Content Include="Content\vendor\wow\animate.css" />
+    <Content Include="Content\vendor\wow\wow.min.js" />
+    <Content Include="Content\venobox.css" />
+    <Content Include="fonts\fa-brands-400.svg" />
+    <Content Include="fonts\fa-regular-400.svg" />
+    <Content Include="fonts\fa-solid-900.svg" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="fonts\Material-Design-Iconic-Font.svg" />
+    <Content Include="fonts\poppins-v5-latin-100.svg" />
+    <Content Include="fonts\poppins-v5-latin-100italic.svg" />
+    <Content Include="fonts\poppins-v5-latin-200.svg" />
+    <Content Include="fonts\poppins-v5-latin-200italic.svg" />
+    <Content Include="fonts\poppins-v5-latin-300.svg" />
+    <Content Include="fonts\poppins-v5-latin-300italic.svg" />
+    <Content Include="fonts\poppins-v5-latin-500.svg" />
+    <Content Include="fonts\poppins-v5-latin-500italic.svg" />
+    <Content Include="fonts\poppins-v5-latin-600.svg" />
+    <Content Include="fonts\poppins-v5-latin-600italic.svg" />
+    <Content Include="fonts\poppins-v5-latin-700.svg" />
+    <Content Include="fonts\poppins-v5-latin-700italic.svg" />
+    <Content Include="fonts\poppins-v5-latin-800.svg" />
+    <Content Include="fonts\poppins-v5-latin-800italic.svg" />
+    <Content Include="fonts\poppins-v5-latin-900.svg" />
+    <Content Include="fonts\poppins-v5-latin-900italic.svg" />
+    <Content Include="fonts\poppins-v5-latin-italic.svg" />
+    <Content Include="fonts\poppins-v5-latin-regular.svg" />
+    <Content Include="fonts\slick.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Models\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShopOnlineModel.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShopOnlineModel.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\ajax-mail.js" />
+    <Content Include="Scripts\bootstrap-datetimepicker.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\imagesloaded.pkgd.min.js" />
+    <Content Include="Scripts\isotope.pkgd.min.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.barrating.min.js" />
+    <Content Include="Scripts\jquery.countdown.min.js" />
+    <Content Include="Scripts\jquery.counterup.min.js" />
+    <Content Include="Scripts\jquery.magnific-popup.min.js" />
+    <Content Include="Scripts\jquery.meanmenu.min.js" />
+    <Content Include="Scripts\jquery.mixitup.min.js" />
+    <Content Include="Scripts\jquery.nice-select.min.js" />
+    <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\owl.carousel.min.js" />
+    <Content Include="Scripts\scrollUp.min.js" />
+    <Content Include="Scripts\slick.min.js" />
+    <Content Include="Scripts\vendor\jquery-1.12.4.min.js" />
+    <Content Include="Scripts\vendor\main.js" />
+    <Content Include="Scripts\vendor\modernizr-2.8.3.min.js" />
+    <Content Include="Scripts\vendor\popper.min.js" />
+    <Content Include="Scripts\venobox.min.js" />
+    <Content Include="Scripts\waypoints.min.js" />
+    <Content Include="Scripts\wow.min.js" />
+    <Content Include="Storage\Image\about-us\icon\1.png" />
+    <Content Include="Storage\Image\about-us\icon\2.png" />
+    <Content Include="Storage\Image\about-us\icon\3.png" />
+    <Content Include="Storage\Image\about-us\icon\4.png" />
+    <Content Include="Storage\Image\banner\baner1.png" />
+    <Content Include="Storage\Image\banner\baner2.png" />
+    <Content Include="Storage\Image\banner\baner3.png" />
+    <Content Include="Storage\Image\banner\baner5.png" />
+    <Content Include="Storage\Image\banner\baner6.png" />
+    <Content Include="Storage\Image\bg-banner\baner4.png" />
+    <Content Include="Storage\Image\bg-banner\bg.png" />
+    <Content Include="Storage\Image\Cart\Laptop ConceptD 3 Ezel CC314 72G 75SM.png" />
+    <Content Include="Storage\Image\Cart\Laptop ConceptD 7 Ezel CC715 71 7940.png" />
+    <Content Include="Storage\Image\favicon.png" />
+    <Content Include="Storage\Image\icon\avatar-01.jpg" />
+    <Content Include="Storage\Image\icon\avatar-02.jpg" />
+    <Content Include="Storage\Image\icon\avatar-03.jpg" />
+    <Content Include="Storage\Image\icon\avatar-04.jpg" />
+    <Content Include="Storage\Image\icon\avatar-05.jpg" />
+    <Content Include="Storage\Image\icon\avatar-06.jpg" />
+    <Content Include="Storage\Image\icon\avatar-big-01.jpg" />
+    <Content Include="Storage\Image\icon\logo-blue.png" />
+    <Content Include="Storage\Image\icon\logo-mini.png" />
+    <Content Include="Storage\Image\icon\logo-white.png" />
+    <Content Include="Storage\Image\icon\logo.png" />
+    <Content Include="Storage\Image\icon\Untitled-1.jpg" />
+    <Content Include="Storage\Image\menu\flag-icon\1.jpg" />
+    <Content Include="Storage\Image\menu\flag-icon\hinh co viet nam.png" />
+    <Content Include="Storage\Image\menu\li-bg-menu.jpg" />
+    <Content Include="Storage\Image\menu\logo\1.jpg" />
+    <Content Include="Storage\Image\menu\logo\2.jpg" />
+    <Content Include="Storage\Image\payment\1.png" />
+    <Content Include="Storage\Image\product\13.jpg" />
+    <Content Include="Storage\Image\product\Acer\Laptop Acer Aspire 3 A315 56 37DV.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Acer Aspire 3 A315 56 502X.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Acer Aspire 3 A315 57G 31YD.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Acer Aspire 3 A315 58 3939.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Acer Aspire 3 A315 58G 50S4.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Acer Aspire 5 A514 54 540F.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Acer Aspire A315 57G 524Z.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Acer Swift 3 Evo SF314 511 59LV.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop ConceptD 3 Ezel CC314 72G 75SM.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop ConceptD 3 Ezel Pro CC314 72P 75EG.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop ConceptD 7 Ezel CC715 71 7940.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop ConceptD 7 Ezel Pro CC715 91P X8CX%28150tr%29.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Gaming Acer Aspire 7 A715 42G R05G.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop gaming Acer Nitro 5 AN515 45 R9SC.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Gaming Acer Nitro 5 AN515 57 56S5.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Gaming Acer Nitro 5 AN515 57 71VV.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop gaming Acer Nitro 5 Eagle AN515 57 54MV.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Gaming Acer Nitro 5 Eagle AN515 57 5669.png" />
+    <Content Include="Storage\Image\product\Acer\Laptop Gaming Acer Predator Helios 300 PH315 54 75YD.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop Asus ROG Strix SCAR 15 G533QR HQ098T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop ASUS TUF Gaming F15 FX506HCB HN139T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop ASUS VivoBook A515EA BQ498T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop ASUS Vivobook A515EA L11171T.jpg" />
+    <Content Include="Storage\Image\product\Asus\Laptop Asus Vivobook A515EA L12033T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop ASUS Vivobook Flip 14 TP470EA EC027T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop Asus Vivobook S433EA AM439T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop ASUS Vivobook X515EA BQ1006T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop ASUS X515EA EJ1046T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop ASUS Zenbook Duo 14 UX482EG KA166T.jpg" />
+    <Content Include="Storage\Image\product\Asus\Laptop ASUS Zenbook Flip UX363EA HP548T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop Asus Zenbook Flip UX363EA HP726W.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop ASUS ZenBook UX325EA KG363T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop ASUS ZenBook UX425EA KI429T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop Gaming Asus ROG Flow X13 GV301QC K6029T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop Gaming Asus ROG Flow X13 GV301QC K6052T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop Gaming Asus ROG Strix G15 G513IH HN015T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop Gaming Asus ROG Strix SCAR 15 G533QM HF089T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop Gaming Asus ROG Zephyrus G14 GA401QE K2097T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop Gaming Asus ROG Zephyrus G15 GA503QM HQ158T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop Gaming Asus TUF Dash F15 FX516PC HN002T.png" />
+    <Content Include="Storage\Image\product\Asus\Laptop Gaming Asus TUF Dash F15 FX516PM HN002W.png" />
+    <Content Include="Storage\Image\product\BestSell\Laptop ASUS TUF Gaming F15 FX506HCB HN139T.png" />
+    <Content Include="Storage\Image\product\BestSell\Laptop Gaming Acer Nitro 5 Eagle AN515 57 5669.png" />
+    <Content Include="Storage\Image\product\BestSell\Laptop Gaming Acer Predator Helios 300 PH315 54 75YD.png" />
+    <Content Include="Storage\Image\product\BestSell\Laptop Gaming Asus ROG Strix G15 G513IH HN015T.png" />
+    <Content Include="Storage\Image\product\BestSell\Laptop Gaming Asus TUF Dash F15 FX516PC HN002T.png" />
+    <Content Include="Storage\Image\product\BestSell\Laptop LG Gram 16Z90P-G.AH73A5.png" />
+    <Content Include="Storage\Image\product\Chuot Asus ROG Chakram.png" />
+    <Content Include="Storage\Image\product\Chuot ASUS ROG Gladius III Wireless.png" />
+    <Content Include="Storage\Image\product\Chuot Asus ROG Strix Impact II Electro Punk.png" />
+    <Content Include="Storage\Image\product\Chuot Gaming ASUS ROG Gladius II Core.png" />
+    <Content Include="Storage\Image\product\Chuot Gaming ASUS ROG Keris.png" />
+    <Content Include="Storage\Image\product\Chuot gaming Asus TUF M3.png" />
+    <Content Include="Storage\Image\product\Chuot Logitech G304 Lightspeed Wireless.png" />
+    <Content Include="Storage\Image\product\Chuot Logitech G402 Hyperion.png" />
+    <Content Include="Storage\Image\product\Chuot MSI Clutch GM41 Lightweight Wireless.png" />
+    <Content Include="Storage\Image\product\Dell\Laptop Dell 15 Inspiron 3501 P90F005N N3501B.png" />
+    <Content Include="Storage\Image\product\Dell\Laptop Dell Inspiron 14 5415 70262929.png" />
+    <Content Include="Storage\Image\product\Dell\Laptop Dell Inspiron 15 3505 Y1N1T1.png" />
+    <Content Include="Storage\Image\product\Dell\Laptop Dell Inspiron 15 3505 Y1N1T2.png" />
+    <Content Include="Storage\Image\product\Dell\Laptop Dell Inspiron 3505 Y1N1T3.png" />
+    <Content Include="Storage\Image\product\Dell\Laptop Dell Inspiron 3511 P112F001BBL %28Black%29.png" />
+    <Content Include="Storage\Image\product\Dell\Laptop Dell Vostro 15 3500 7G3981.png" />
+    <Content Include="Storage\Image\product\Dell\Laptop Dell Vostro 3400 70234073.png" />
+    <Content Include="Storage\Image\product\Dell\Laptop Dell Vostro 3510 %28P112F002ABL%29.png" />
+    <Content Include="Storage\Image\product\Dell\Laptop Gaming Dell Alienware M15 R6 P109F001BBL.png" />
+    <Content Include="Storage\Image\product\Dell\Laptop Gaming Dell G15 5511 70266676.jpg" />
+    <Content Include="Storage\Image\product\giare\giare1.png" />
+    <Content Include="Storage\Image\product\giare\giare2.png" />
+    <Content Include="Storage\Image\product\giare\giare3.png" />
+    <Content Include="Storage\Image\product\giare\giare4.png" />
+    <Content Include="Storage\Image\product\giare\giare5.png" />
+    <Content Include="Storage\Image\product\giare\giare6.png" />
+    <Content Include="Storage\Image\product\giare\giare7.png" />
+    <Content Include="Storage\Image\product\Gigabyte\Laptop GIGABYTE AERO 15 OLED KD 72S1623GH.png" />
+    <Content Include="Storage\Image\product\Gigabyte\Laptop GIGABYTE AORUS 15P KD 72S1223GH.png" />
+    <Content Include="Storage\Image\product\Gigabyte\Laptop GIGABYTE AORUS 15P XD 73S1324GH.png" />
+    <Content Include="Storage\Image\product\Gigabyte\Laptop GIGABYTE AORUS 15P YD 73S1224GH.png" />
+    <Content Include="Storage\Image\product\Gigabyte\Laptop GIGABYTE G5 KC 5S11130SB.png" />
+    <Content Include="Storage\Image\product\HP\Laptop Gaming HP Omen 16 b0123TX 4Y0W6PA.png" />
+    <Content Include="Storage\Image\product\HP\Laptop Gaming HP Omen 16 b0127TX 4Y0W7PA.png" />
+    <Content Include="Storage\Image\product\HP\Laptop Gaming HP Omen 16 b0141TX 4Y0Z7PA.png" />
+    <Content Include="Storage\Image\product\HP\Laptop Gaming HP Omen 16 b0142TX 4Y0Z8PA.png" />
+    <Content Include="Storage\Image\product\HP\Laptop Gaming HP VICTUS 16 d0197TX 4R0T9PA.png" />
+    <Content Include="Storage\Image\product\HP\Laptop Gaming HP VICTUS 16 e0175AX 4R0U8PA.png" />
+    <Content Include="Storage\Image\product\HP\Laptop Gaming HP VICTUS 16 e0177AX 4R0U9PA.png" />
+    <Content Include="Storage\Image\product\HP\Laptop Gaming HP VICTUS 16 e0179AX 4R0V0PA.png" />
+    <Content Include="Storage\Image\product\Lenovo\Laptop IdeaPad 5 14ALC05 82LM00D5VN.png" />
+    <Content Include="Storage\Image\product\Lenovo\Laptop Lenovo IdeaPad 5 15ALC05 82LN00CDVN.png" />
+    <Content Include="Storage\Image\product\Lenovo\Laptop Lenovo IdeaPad 5 Pro 14ACN6 82L7007XVN.png" />
+    <Content Include="Storage\Image\product\Lenovo\Laptop Lenovo IdeaPad 5 Pro 14ACN6 82L7007YVN.png" />
+    <Content Include="Storage\Image\product\Lenovo\Laptop Lenovo IdeaPad Slim 3 14ITL6 82H700G1VN.png" />
+    <Content Include="Storage\Image\product\Lenovo\Laptop LENOVO ThinkPad L13 Gen 2 20VH0049VA.png" />
+    <Content Include="Storage\Image\product\Lenovo\Laptop LENOVO ThinkPad L13 Gen 2 20VH004AVA.png" />
+    <Content Include="Storage\Image\product\Lenovo\Laptop Lenovo V15 G2 ITL 82KB00CKVN.png" />
+    <Content Include="Storage\Image\product\LG\Laptop LG Gram 14Z90P-G.AH75A5.png" />
+    <Content Include="Storage\Image\product\LG\Laptop LG Gram 16Z90P-G.AH73A5.png" />
+    <Content Include="Storage\Image\product\LG\Laptop LG Gram 17ZD90P-G.AX71A5.png" />
+    <Content Include="Storage\Image\product\Logitech G502 Proteus Spectrum.png" />
+    <Content Include="Storage\Image\product\Logitech M238 Wireless - World Cup Edition - Argentina.png" />
+    <Content Include="Storage\Image\product\Logitech M238 Wireless - World Cup Edition - France.png" />
+    <Content Include="Storage\Image\product\Logitech M238 Wireless - World Cup Edition - Germany.png" />
+    <Content Include="Storage\Image\product\Logitech M238 Wireless - World Cup Edition - Spain.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop Gaming MSI Bravo 15 B5DD 275VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop Gaming MSI Bravo 15 B5DD 276VN.jpg" />
+    <Content Include="Storage\Image\product\MSI\Laptop Gaming MSI GF63 Thin 10SC 020VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop Gaming MSI Katana GF66 11UE 477VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop MSI Creator Z16 A11UET 217VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop MSI Creator Z16 A11UET 218VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop MSI Modern 14 B10MW 646VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop MSI Modern 14 B11MOU 848VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop MSI Modern 14 B11MOU 851VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop MSI Modern 14 B11SBU 668VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop MSI Modern 14 B5M 064VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop MSI Modern 15 A10MU 667VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop MSI Modern 15 A11MU 678VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop MSI Modern 15 A5M 238VN.png" />
+    <Content Include="Storage\Image\product\MSI\Laptop MSI Summit E13 Flip Evo A11MT 211V.png" />
+    <Content Include="Storage\Image\product\New\Laptop Acer Aspire 3 A315 58G 50S4.png" />
+    <Content Include="Storage\Image\product\New\Laptop Asus Zenbook Flip UX363EA HP726W.png" />
+    <Content Include="Storage\Image\product\New\Laptop LG Gram 17ZD90P-G.AX71A5.png" />
+    <Content Include="Storage\Image\product\New\Laptop MSI Creator Z16 A11UET 218VN.png" />
+    <Content Include="Storage\Image\product\New\Windows 11 Home.png" />
+    <Content Include="Storage\Image\product\New\Windows 11 Pro.png" />
+    <Content Include="Storage\Image\product\Offer\Laptop ASUS Zenbook Duo 14 UX482EG KA166T.jpg" />
+    <Content Include="Storage\Image\product\Offer\Laptop ConceptD 7 Ezel Pro CC715 91P X8CX%28150tr%29.png" />
+    <Content Include="Storage\Image\product\Offer\Laptop Dell Inspiron 3511 P112F001BBL %28Black%29.png" />
+    <Content Include="Storage\Image\product\Offer\Laptop Gaming HP Omen 16 b0127TX 4Y0W7PA.png" />
+    <Content Include="Storage\Image\product\Offer\Laptop MSI Summit E13 Flip Evo A11MT 211V.png" />
+    <Content Include="Storage\Image\product\Phan mem Microsoft 365 Personal QQ2-00003.png" />
+    <Content Include="Storage\Image\product\Phan mem Microsoft Windows 10 Home Online DwnLd NR KW9-00265.png" />
+    <Content Include="Storage\Image\product\Phan mem Office Home &amp; Student 2021 79G-05337.png" />
+    <Content Include="Storage\Image\product\Phan mem Windows 10 Pro Online DwnLd NR FQC-09131.png" />
+    <Content Include="Storage\Image\product\Windows 11 Home.png" />
+    <Content Include="Storage\Image\product\Windows 11 Pro.png" />
+    <Content Include="Storage\Image\shipping-icon\1.png" />
+    <Content Include="Storage\Image\shipping-icon\2.png" />
+    <Content Include="Storage\Image\shipping-icon\3.png" />
+    <Content Include="Storage\Image\shipping-icon\4.png" />
+    <Content Include="Storage\Image\slider\hinhnen1.png" />
+    <Content Include="Storage\Image\slider\hinhnen2.jpg" />
+    <Content Include="Storage\Image\slider\hinhnen3.png" />
+    <Content Include="Storage\Image\static-top\1.jpg" />
+    <Content Include="Storage\Image\team\huy.png" />
+    <Content Include="Storage\Image\team\nam.png" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\AdminPage\AdminPageAreaRegistration.cs" />
+    <Compile Include="Areas\AdminPage\Controllers\CustomerManagementController.cs" />
+    <Compile Include="Areas\AdminPage\Controllers\CustomersController.cs" />
+    <Compile Include="Areas\AdminPage\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\AdminPage\Controllers\LogoutController.cs" />
+    <Compile Include="Areas\AdminPage\Controllers\NewProductController.cs" />
+    <Compile Include="Areas\AdminPage\Controllers\AllproductsController.cs" />
+    <Compile Include="Areas\AdminPage\Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\BlogController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\FAQController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginADController.cs" />
+    <Compile Include="Controllers\ProductDetailController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShopingCartController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaiViet.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Giohang.cs" />
+    <Compile Include="Models\Common.cs" />
+    <Compile Include="Models\CtDonHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DonHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\KhachHang.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSP.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Security.cs" />
+    <Compile Include="Models\ShopOnlineModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopOnlineModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SanPham.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaiKhoan.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="fonts\fontawesome-webfont3e6e.woff2" />
+    <Content Include="fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="fonts\Material-Design-Iconic-Fontd1f1.ttf" />
+    <Content Include="fonts\Material-Design-Iconic-Fontd1f1.woff" />
+    <Content Include="fonts\Material-Design-Iconic-Fontd1f1.woff2" />
+    <Content Include="Areas\AdminPage\Views\web.config" />
+    <Content Include="Areas\AdminPage\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\AdminPage\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\AdminPage\Views\Dashboard\Index.cshtml" />
+    <Content Include="Content\vendor\font-awesome-4.7\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\vendor\font-awesome-4.7\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\vendor\font-awesome-4.7\fonts\FontAwesome.otf" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-brands-400.eot" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-brands-400.ttf" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-brands-400.woff" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-brands-400.woff2" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-regular-400.eot" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-regular-400.ttf" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-regular-400.woff" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-regular-400.woff2" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-solid-900.eot" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-solid-900.ttf" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-solid-900.woff" />
+    <Content Include="Content\vendor\font-awesome-5\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\vendor\lightbox2\dist\js\lightbox-plus-jquery.min.map" />
+    <Content Include="Content\vendor\lightbox2\dist\js\lightbox.min.map" />
+    <Content Include="Content\vendor\mdi-font\fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="Content\vendor\mdi-font\fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="Content\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="Content\vendor\mdi-font\fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="Content\vendor\slick\config.rb" />
+    <Content Include="Content\vendor\slick\fonts\slick.eot" />
+    <Content Include="Content\vendor\slick\fonts\slick.ttf" />
+    <Content Include="Content\vendor\slick\fonts\slick.woff" />
+    <Content Include="Content\vendor\slick\slick-theme.less" />
+    <Content Include="Content\vendor\slick\slick-theme.scss" />
+    <Content Include="Content\vendor\slick\slick.less" />
+    <Content Include="Content\vendor\slick\slick.scss" />
+    <Content Include="fonts\poppins-v5-latin-100.eot" />
+    <Content Include="fonts\poppins-v5-latin-100.ttf" />
+    <Content Include="fonts\poppins-v5-latin-100.woff" />
+    <Content Include="fonts\poppins-v5-latin-100.woff2" />
+    <Content Include="fonts\poppins-v5-latin-100italic.eot" />
+    <Content Include="fonts\poppins-v5-latin-100italic.ttf" />
+    <Content Include="fonts\poppins-v5-latin-100italic.woff" />
+    <Content Include="fonts\poppins-v5-latin-100italic.woff2" />
+    <Content Include="fonts\poppins-v5-latin-200.eot" />
+    <Content Include="fonts\poppins-v5-latin-200.ttf" />
+    <Content Include="fonts\poppins-v5-latin-200.woff" />
+    <Content Include="fonts\poppins-v5-latin-200.woff2" />
+    <Content Include="fonts\poppins-v5-latin-200italic.eot" />
+    <Content Include="fonts\poppins-v5-latin-200italic.ttf" />
+    <Content Include="fonts\poppins-v5-latin-200italic.woff" />
+    <Content Include="fonts\poppins-v5-latin-200italic.woff2" />
+    <Content Include="fonts\poppins-v5-latin-300.eot" />
+    <Content Include="fonts\poppins-v5-latin-300.ttf" />
+    <Content Include="fonts\poppins-v5-latin-300.woff" />
+    <Content Include="fonts\poppins-v5-latin-300.woff2" />
+    <Content Include="fonts\poppins-v5-latin-300italic.eot" />
+    <Content Include="fonts\poppins-v5-latin-300italic.ttf" />
+    <Content Include="fonts\poppins-v5-latin-300italic.woff" />
+    <Content Include="fonts\poppins-v5-latin-300italic.woff2" />
+    <Content Include="fonts\poppins-v5-latin-500.eot" />
+    <Content Include="fonts\poppins-v5-latin-500.ttf" />
+    <Content Include="fonts\poppins-v5-latin-500.woff" />
+    <Content Include="fonts\poppins-v5-latin-500.woff2" />
+    <Content Include="fonts\poppins-v5-latin-500italic.eot" />
+    <Content Include="fonts\poppins-v5-latin-500italic.ttf" />
+    <Content Include="fonts\poppins-v5-latin-500italic.woff" />
+    <Content Include="fonts\poppins-v5-latin-500italic.woff2" />
+    <Content Include="fonts\poppins-v5-latin-600.eot" />
+    <Content Include="fonts\poppins-v5-latin-600.ttf" />
+    <Content Include="fonts\poppins-v5-latin-600.woff" />
+    <Content Include="fonts\poppins-v5-latin-600.woff2" />
+    <Content Include="fonts\poppins-v5-latin-600italic.eot" />
+    <Content Include="fonts\poppins-v5-latin-600italic.ttf" />
+    <Content Include="fonts\poppins-v5-latin-600italic.woff" />
+    <Content Include="fonts\poppins-v5-latin-600italic.woff2" />
+    <Content Include="fonts\poppins-v5-latin-700.eot" />
+    <Content Include="fonts\poppins-v5-latin-700.ttf" />
+    <Content Include="fonts\poppins-v5-latin-700.woff" />
+    <Content Include="fonts\poppins-v5-latin-700.woff2" />
+    <Content Include="fonts\poppins-v5-latin-700italic.eot" />
+    <Content Include="fonts\poppins-v5-latin-700italic.ttf" />
+    <Content Include="fonts\poppins-v5-latin-700italic.woff" />
+    <Content Include="fonts\poppins-v5-latin-700italic.woff2" />
+    <Content Include="fonts\poppins-v5-latin-800.eot" />
+    <Content Include="fonts\poppins-v5-latin-800.ttf" />
+    <Content Include="fonts\poppins-v5-latin-800.woff" />
+    <Content Include="fonts\poppins-v5-latin-800.woff2" />
+    <Content Include="fonts\poppins-v5-latin-800italic.eot" />
+    <Content Include="fonts\poppins-v5-latin-800italic.ttf" />
+    <Content Include="fonts\poppins-v5-latin-800italic.woff" />
+    <Content Include="fonts\poppins-v5-latin-800italic.woff2" />
+    <Content Include="fonts\poppins-v5-latin-900.eot" />
+    <Content Include="fonts\poppins-v5-latin-900.ttf" />
+    <Content Include="fonts\poppins-v5-latin-900.woff" />
+    <Content Include="fonts\poppins-v5-latin-900.woff2" />
+    <Content Include="fonts\poppins-v5-latin-900italic.eot" />
+    <Content Include="fonts\poppins-v5-latin-900italic.ttf" />
+    <Content Include="fonts\poppins-v5-latin-900italic.woff" />
+    <Content Include="fonts\poppins-v5-latin-900italic.woff2" />
+    <Content Include="fonts\poppins-v5-latin-italic.eot" />
+    <Content Include="fonts\poppins-v5-latin-italic.ttf" />
+    <Content Include="fonts\poppins-v5-latin-italic.woff" />
+    <Content Include="fonts\poppins-v5-latin-italic.woff2" />
+    <Content Include="fonts\poppins-v5-latin-regular.eot" />
+    <Content Include="fonts\poppins-v5-latin-regular.ttf" />
+    <Content Include="fonts\poppins-v5-latin-regular.woff" />
+    <Content Include="fonts\poppins-v5-latin-regular.woff2" />
+    <Content Include="Areas\AdminPage\Views\NewProduct\Index.cshtml" />
+    <Content Include="Areas\AdminPage\Views\Allproducts\Tongsp.cshtml" />
+    <Content Include="Areas\AdminPage\Views\Orders\Index.cshtml" />
+    <Content Include="Areas\AdminPage\Views\Customers\Index.cshtml" />
+    <Content Include="Areas\AdminPage\Views\CustomerManagement\Index.cshtml" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fa-brands-400.eot" />
+    <Content Include="fonts\fa-brands-400.ttf" />
+    <Content Include="fonts\fa-brands-400.woff" />
+    <Content Include="fonts\fa-brands-400.woff2" />
+    <Content Include="fonts\fa-regular-400.eot" />
+    <Content Include="fonts\fa-regular-400.ttf" />
+    <Content Include="fonts\fa-regular-400.woff" />
+    <Content Include="fonts\fa-regular-400.woff2" />
+    <Content Include="fonts\fa-solid-900.eot" />
+    <Content Include="fonts\fa-solid-900.ttf" />
+    <Content Include="fonts\fa-solid-900.woff" />
+    <Content Include="fonts\fa-solid-900.woff2" />
+    <Content Include="fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="fonts\Material-Design-Iconic-Font.woff2" />
+    <Content Include="fonts\slick.eot" />
+    <Content Include="fonts\slick.ttf" />
+    <Content Include="fonts\slick.woff" />
+    <EntityDeploy Include="Models\ShopOnlineModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShopOnlineModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ShopOnlineModel.edmx.diagram">
+      <DependentUpon>ShopOnlineModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\AdminPage\Views\Allproducts\Xoasanpham.cshtml" />
+    <Content Include="Areas\AdminPage\Views\Allproducts\Suasp.cshtml" />
+    <None Include="packages.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\About\Index.cshtml" />
+    <Content Include="Views\Blog\Blogs.cshtml" />
+    <Content Include="Views\ProductDetail\Index.cshtml" />
+    <Content Include="Views\Products\AsusG.cshtml" />
+    <Content Include="Views\FAQ\Index.cshtml" />
+    <Content Include="Views\LoginAD\Index.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\Products\AcerG.cshtml" />
+    <Content Include="Views\Products\MSIG.cshtml" />
+    <Content Include="Views\Products\LenovoG.cshtml" />
+    <Content Include="Views\Products\HpG.cshtml" />
+    <Content Include="Views\Products\DellG.cshtml" />
+    <Content Include="Views\Products\Gigabyte.cshtml" />
+    <Content Include="Views\Products\AsusHT.cshtml" />
+    <Content Include="Views\Products\AcerHT.cshtml" />
+    <Content Include="Views\Products\MSIHT.cshtml" />
+    <Content Include="Views\Products\LenovoHT.cshtml" />
+    <Content Include="Views\Products\LgHT.cshtml" />
+    <Content Include="Views\Products\DellHT.cshtml" />
+    <Content Include="Views\Products\cLogi.cshtml" />
+    <Content Include="Views\Products\cMSi.cshtml" />
+    <Content Include="Views\Products\cAsus.cshtml" />
+    <Content Include="Views\Products\Office365.cshtml" />
+    <Content Include="Views\Products\Office2021.cshtml" />
+    <Content Include="Views\Products\W10H.cshtml" />
+    <Content Include="Views\Products\W10P.cshtml" />
+    <Content Include="Views\Products\W11H.cshtml" />
+    <Content Include="Views\Products\W11P.cshtml" />
+    <Content Include="Views\ShopingCart\Giohang.cshtml" />
+    <Content Include="Views\ShopingCart\GiohangPartial.cshtml" />
+    <Content Include="Views\ShopingCart\DatHang.cshtml" />
+    <Content Include="Views\Blog\BlogsContent.cshtml" />
+    <Content Include="Views\ShopingCart\Xacnhandh.cshtml" />
+    <Content Include="Views\ShopingCart\ThongBao.cshtml" />
+    <Content Include="Views\ShopingCart\TBthanhcong.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Areas\AdminPage\Data\" />
+    <Folder Include="Areas\AdminPage\Views\Logout\" />
+    <Folder Include="Storage\Image\wishlist-thumb\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>53364</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44341/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+  </Target>
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,423 @@
+﻿@using doan.Models
+@{
+    ViewBag.Title = "Index";
+}
+<!-- Begin Product Area -->
+<div class="product-area pt-60 pb-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="li-product-tab">
+                    <ul class="nav li-product-menu">
+                        @{
+                            int d = 0;
+                            foreach (LoaiSP i in Common.getCategories())
+                            {
+                                <li>
+                                    <a class="@(d++ == 0 ? "active" : "")" data-toggle="tab" href="#@i.maLoai">
+                                        <span>@i.tenLoai</span>
+                                    </a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+                <!-- Begin Li's Tab Menu Content Area -->
+            </div>
+        </div>
+        <div class="tab-content">
+            @{
+                int n = 0;
+                foreach (LoaiSP i in Common.getCategories())
+                {
+                    <div id="@i.maLoai" class="tab-pane @(n++ == 0 ? "active" : "") show " role="tabpanel">
+                        <div class="row">
+                            <div class="product-active owl-carousel">
+                                @{
+                                    foreach (SanPham j in Common.getProductByLoaiSP(i.maLoai))
+                                    {
+                                        <div class="col-lg-12">
+                                            <!-- single-product-wrap start -->
+                                            <div class="single-product-wrap">
+                                                <div class="product-image">
+                                                    <a href='@Url.Action("Index", "ProductDetail", new { masp = j.maSP })'>
+                                                        <img src="~/Storage/Image/product/@j.hinhDD" alt="@j.tenSP">
+                                                    </a>
+                                                    <span class="sticker">Mới</span>
+                                                </div>
+                                                <div class="product_desc">
+                                                    <div class="product_desc_info">
+                                                        <div class="product-review">
+                                                            <h5 class="manufacturer">
+                                                                <a href="#"></a>
+                                                            </h5>
+                                                            <div class="rating-box">
+                                                                <ul class="rating">
+                                                                    <li><i class="fa fa-star-o"></i></li>
+                                                                    <li><i class="fa fa-star-o"></i></li>
+                                                                    <li><i class="fa fa-star-o"></i></li>
+                                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                        <h4><a class="product_name" href='@Url.Action("Index", "ProductDetail", new { masp = j.maSP })'>@j.tenSP</a></h4>
+                                                        <div class="price-box">
+                                                            <span class="new-price">@String.Format("{0:#,##0 đ}",@j.giaBan)</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="add-actions">
+                                                        <ul class="add-actions-link">
+                                                        <li class="add-cart active"><a href="@Url.Action("ThemGiohang","ShopingCart", new { @Masp = @j.maSP,@strURL = Request.Url.ToString() })">Thêm vào giỏ</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- single-product-wrap end -->
+                                        </div>
+                                    }
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+    </div>
+</div>
+<!-- Product Area End Here -->
+<!-- Begin baner Static Banner Area -->
+<div class="li-static-banner">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Single Banner Area -->
+            <div class="col-lg-4 col-md-4 text-center">
+                <div class="single-banner">
+                    <a href='@Url.Action("AsusHT", "Products")'>
+                        <img src="~/Storage/Image/banner/baner2.png" alt="Li's Static Banner">
+                    </a>
+                </div>
+            </div>
+            <!-- Single Banner Area End Here -->
+            <!-- Begin Single Banner Area -->
+            <div class="col-lg-4 col-md-4 text-center pt-xs-30">
+                <div class="single-banner">
+                    <a href='@Url.Action("cLogi", "Products")'>
+                        <img src="~/Storage/Image/banner/baner3.png" alt="Li's Static Banner">
+                    </a>
+                </div>
+            </div>
+            <!-- Single Banner Area End Here -->
+            <!-- Begin Single Banner Area -->
+            <div class="col-lg-4 col-md-4 text-center pt-xs-30">
+                <div class="single-banner">
+                    <a href='@Url.Action("HpG", "Products")'>
+                        <img src="~/Storage/Image/banner/baner5.png" alt="Li's Static Banner">
+                    </a>
+                </div>
+            </div>
+            <!-- Single Banner Area End Here -->
+        </div>
+    </div>
+</div>
+<!-- Li's Static Banner Area End Here -->
+<!-- Begin Laptop Product Area -->
+<section class="product-area li-laptop-product pt-60 pb-45">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Li's Section Area -->
+            <div class="col-lg-12">
+                <div class="li-section-title">
+                    <h2>
+                        <span>Laptop</span>
+                    </h2>
+                    <ul class="li-sub-category-list">
+                        <li class="active">@Html.ActionLink("Học tập","DellHT", "Products")</li>
+                        <li>@Html.ActionLink("Làm việc","LgHT", "Products")</li>
+                        <li>@Html.ActionLink("Doanh nhân","MSIHT", "Products")</li>
+                    </ul>
+                </div>
+                <div class="row">
+                    <div class="product-active owl-carousel">
+                        @{
+                            foreach (SanPham k in Common.getProductByLoaiSP(29))
+                            {
+                                <div class="col-lg-12">
+                                    <!-- single-product-wrap start -->
+                                    <div class="single-product-wrap">
+                                        <div class="product-image">
+                                            <a href='@Url.Action("Index", "ProductDetail", new { masp = k.maSP })'>
+                                                <img src="~/Storage/Image/product/@k.hinhDD" alt="@k.tenSP">
+                                            </a>
+                                        </div>
+                                        <div class="product_desc">
+                                            <div class="product_desc_info">
+                                                <div class="product-review">
+                                                    <h5 class="manufacturer">
+                                                        <a href="#"></a>
+                                                    </h5>
+                                                    <div class="rating-box">
+                                                        <ul class="rating">
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <h4><a class="product_name" href='@Url.Action("Index", "ProductDetail", new { masp = k.maSP })'>@k.tenSP</a></h4>
+                                                <div class="price-box">
+                                                    <span class="new-price">@string.Format("{0:#,##0 đ}", k.giaBan)</span>
+                                                </div>
+                                            </div>
+                                            <div class="add-actions">
+                                                <ul class="add-actions-link">
+                                                    <li class="add-cart active">
+                                                        <a href="@Url.Action("ThemGiohang","ShopingCart", new { @Masp = @k.maSP,@strURL = Request.Url.ToString()})">Thêm vào giỏ</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- single-product-wrap end -->
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Section Area End Here -->
+        </div>
+    </div>
+</section>
+<!-- Li's Laptop Product Area End Here -->
+<!-- Begin baner Home Area -->
+<div class="li-static-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <!-- Begin Li's Static Home Image Area -->
+                <div class="li-static-home-image"></div>
+                <!-- Li's Static Home Image Area End Here -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Li's baner Home Area End Here -->
+<!-- Begin Mouse Product Area -->
+<section class="product-area li-trending-product pt-60 pb-45">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Li's Tab Menu Area -->
+            <div class="col-lg-12">
+                <div class="li-section-title">
+                    @{
+                        foreach (LoaiSP z in Common.getCateMouse())
+                        {
+                            <h2>
+                                <span>@z.tenLoai</span>
+                            </h2>
+                        }
+                    }
+                    <ul class="li-sub-category-list">
+                        <li class="active">@Html.ActionLink("Chuột MSI", "cMSI", "Products")</li>
+                        <li>@Html.ActionLink("Chuột Logitech", "cLogi", "Products")</li>
+                        <li>@Html.ActionLink("Chuột Asus", "cAsus", "Products")</li>
+                    </ul>
+                </div>
+
+                <!-- Begin Li's Tab Menu Content Area -->
+                <div class="row">
+                    <div class="product-active owl-carousel">
+                        @{
+                            foreach (SanPham x in Common.getProductByLoaiSP(31))
+                            {
+                                <div class="col-lg-12">
+                                    <!-- single-product-wrap start -->
+                                    <div class="single-product-wrap">
+                                        <div class="product-image">
+                                            <a href='@Url.Action("Index", "ProductDetail", new { masp = x.maSP })'>
+                                                <img src="~/Storage/Image/product/@x.hinhDD" alt="@x.tenSP">
+                                            </a>
+                                            <span class="sticker">Mới</span>
+                                        </div>
+                                        <div class="product_desc">
+                                            <div class="product_desc_info">
+                                                <div class="product-review">
+                                                    <h5 class="manufacturer">
+                                                        <a href="#"></a>
+                                                    </h5>
+                                                    <div class="rating-box">
+                                                        <ul class="rating">
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <h4><a class="product_name" href='@Url.Action("Index", "ProductDetail", new { masp = x.maSP })'>@x.tenSP</a></h4>
+                                                <div class="price-box">
+                                                    <span class="new-price">@String.Format("{0:#,##0 đ}", @x.giaBan)</span>
+                                                </div>
+                                            </div>
+                                            <div class="add-actions">
+                                                <ul class="add-actions-link">
+                                                    <li class="add-cart active"><a href="@Url.Action("ThemGiohang","ShopingCart", new { @Masp = @x.maSP,@strURL = Request.Url.ToString() })">Thêm vào giỏ</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- single-product-wrap end -->
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Tab Menu Content Area End Here -->
+    </div>
+    <!-- Tab Menu Area End Here -->
+</section>
+<!-- Li's Mouse Product Area End Here -->
+<!-- Begin MS Products Area -->
+<section class="product-area li-laptop-product li-trendding-products best-sellers pb-45">
+    <div class="container">
+        <div class="row">
+            <!-- Begin Li's Section Area -->
+            <div class="col-lg-12">
+                <div class="li-section-title">
+                    <h2>
+                        <span>Microsoft & Office</span>
+                    </h2>
+                </div>
+                <div class="row">
+                    <div class="product-active owl-carousel">
+                        @{
+                            foreach (SanPham b in Common.getMS())
+                            {
+                                <div class="col-lg-12">
+                                    <!-- single-product-wrap start -->
+                                    <div class="single-product-wrap">
+                                        <div class="product-image">
+                                            <a href='@Url.Action("Index", "ProductDetail", new { masp = b.maSP })'>
+                                                <img src="~/Storage/Image/product/@b.hinhDD" alt="@b.tenSP">
+                                            </a>
+                                        </div>
+                                        <div class="product_desc">
+                                            <div class="product_desc_info">
+                                                <div class="product-review">
+                                                    <h5 class="manufacturer">
+                                                        <a href="#"></a>
+                                                    </h5>
+                                                    <div class="rating-box">
+                                                        <ul class="rating">
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li><i class="fa fa-star-o"></i></li>
+                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                            <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <h4><a class="product_name" href='@Url.Action("Index", "ProductDetail", new { masp = b.maSP })'>@b.tenSP</a></h4>
+                                                <div class="price-box">
+                                                    <span class="new-price">@String.Format("{0:#,##0 đ}", @b.giaBan)</span>
+                                                </div>
+                                            </div>
+                                            <div class="add-actions">
+                                                <ul class="add-actions-link">
+                                                    <li class="add-cart active"><a href="@Url.Action("ThemGiohang","ShopingCart", new { @Masp = @b.maSP,@strURL = Request.Url.ToString() })">Thêm vào giỏ</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- single-product-wrap end -->
+                                </div>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Section Area End Here -->
+        </div>
+    </div>
+</section>
+<!-- Li's Trendding Products Area End Here -->
+
+@section QuangCao
+    {
+    <!-- Begin Slider With Banner Area -->
+    <div class="slider-with-banner">
+        <div class="container">
+            <div class="row">
+                <!-- Begin Slider Area -->
+                <div class="col-lg-8 col-md-8">
+                    <div class="slider-area">
+                        <div class="slider-active owl-carousel">
+                            <!-- Begin Single Slide Area -->
+                            <div class="single-slide align-center-left animation-style-01 bg-1">
+                                <div class="slider-progress"></div>
+                                <div class="slider-content">
+                                    <h5>Giảm giá <span>-50% giảm</span> Tuần này</h5>
+                                    <h2>Dell Gaming</h2>
+                                    <h3>Chỉ từ <span>20,990,000 đ</span></h3>
+                                    <div class="default-btn slide-btn">
+                                        <a class="links" href='@Url.Action("DellG","Products")'>Mua Ngay</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Slide Area End Here -->
+                            <!-- Begin Single Slide Area -->
+                            <div class="single-slide align-center-left animation-style-02 bg-2">
+                                <div class="slider-progress"></div>
+                                <div class="slider-content">
+                                    <h5>Giảm giá <span>Black Friday</span> Duy nhất 1 ngày</h5>
+                                    <h2>Laptop cho văn phòng</h2>
+                                    <h3>Chỉ từ <span>19,490,000 đ</span></h3>
+                                    <div class="default-btn slide-btn">
+                                        <a class="links" href='@Url.Action("AsusHT","Products")'>Mua Ngay</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Slide Area End Here -->
+                            <!-- Begin Single Slide Area -->
+                            <div class="single-slide align-center-left animation-style-01 bg-3">
+                                <div class="slider-progress"></div>
+                                <div class="slider-content">
+                                    <h5>Giảm giá <span>-10% Off</span> Tuần này</h5>
+                                    <h2>Siêu phẩm Gigabyte</h2>
+                                    <h3>Chỉ từ <span>27,990,000 đ</span></h3>
+                                    <div class="default-btn slide-btn">
+                                        <a class="links" href='@Url.Action("Gigabyte","Products")'>Mua Ngay</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single Slide Area End Here -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Slider Area End Here -->
+                <!-- Begin Li Banner Area -->
+                <div class="col-lg-4 col-md-4 text-center pt-xs-30">
+                    <div class="li-banner">
+                        <a href='@Url.Action("MSIG","Products")'>
+                            <img src="~/Storage/Image/banner/baner1.png" alt="MSI gaming sale">
+                        </a>
+                    </div>
+                    <div class="li-banner mt-15 mt-sm-30 mt-xs-30">
+                        <a href='@Url.Action("LenovoG","Products")'>
+                            <img src="~/Storage/Image/banner/baner6.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <!-- Li Banner Area End Here -->
+            </div>
+        </div>
+    </div>
+    <!-- Slider With Banner Area End Here -->
+}

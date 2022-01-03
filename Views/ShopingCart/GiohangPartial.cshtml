@@ -1,0 +1,11 @@
+﻿<div class="header-middle-right">
+    <a href="@Url.Action("Giohang", "ShopingCart")">
+        <div class="hm-minicart">
+            <i class="item-icon"></i>
+            <i class="item-text">
+                @String.Format("{0:#,##0 đ}", @ViewBag.Tongtien)
+                <i class="cart-item-count">@ViewBag.Tongsoluong</i>
+            </i>
+        </div>
+    </a>
+</div>
